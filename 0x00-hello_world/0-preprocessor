@@ -1,1 +1,3 @@
+#!/bin/bah
+gcc -E $CFILE -o c
 
