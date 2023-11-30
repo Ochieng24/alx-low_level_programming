@@ -1,0 +1,42 @@
+# Macro for name of executable
+NAME = school
+
+# Macro for source files
+SRC = main.c school.c
+
+# Macro for the compiler
+CC = gcc
+
+# Command to remove files
+RM = rm -f
+
+# Creating object names
+OBJ = $(SRC:.c=.o)
+
+# Creating the compiled .o
+all: $(NAME)
+
+# Compilation command
+COMPILE = $(CC) -c $(CFLAGS) $< -o $@
+
+# Rule for building the executable
+$(NAME): $(OBJ)
+    $(CC) $(OBJ) -o $(NAME)
+
+# Rule for compiling source file to obj file
+%.o: %.c
+    $(COMPILE)
+
+# Clean rule to remove obj files and the executable
+clean:
+    @$(RM) $(NAME)
+    @$(RM) *#
+    $(RM) *~ $(OBJ)
+
+oclean:
+    $(RM) $(OBJ)
+
+fclean: clean oclean
+
+# Rule to remove temporary, executable, and object files
+re: fclean all

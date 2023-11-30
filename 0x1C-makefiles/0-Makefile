@@ -1,0 +1,6 @@
+# Define the 'all' rule
+all: school
+
+# Compile the source files and build the executable
+school: main.c school.c
+	gcc main.c school.c -o school
